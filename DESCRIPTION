@@ -1,0 +1,34 @@
+Package: Function
+Type: Package
+Title: Simulation and Testing for an OwnFunction Distribution
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Noemi", "Huebla",
+      email = "noenmi.huebla@espoch.edu.ec",
+      role = c("aut", "cre")
+    ),
+    person(
+    "Heidy", "Macas",
+    email = "heidy.macas@espoch.edu.ec",
+    role = c("aut")
+    ),
+    person(
+    "Angel", "Paullan",
+    email = "angel.paullan@espoch.edu.ec",
+    role = c("aut")
+    ),
+    person(
+    "Julio", "Tamay",
+    email = "julio.tamay@espoch.edu.ec",
+    role = c("aut")
+    )
+  )
+Maintainer: Angel Paullan <angel.paullan@espoch.edu.ec>
+Description: This package implements a custom continuous probability distribution , including its probability density function and cumulative distribution function. It also provides pseudo-random number generation using the inverse transform method and validates the results.
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+Imports:
+    fdth
+RoxygenNote: 7.3.3
