@@ -22,7 +22,7 @@
 #'
 #' @examples
 #' # Generate 100 random values
-#randomfun2(100)
+#' randomfun2(100)
 #'
 #' @export
 randomfun2 <- function(n, tol = 1e-8, max_iter = 100) {
@@ -57,3 +57,4 @@ randomfun2 <- function(n, tol = 1e-8, max_iter = 100) {
 
   return(x_gen)
 }
+

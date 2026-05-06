@@ -31,5 +31,6 @@ iterative scheme:
 }
 \examples{
 # Generate 100 random values
+randomfun2(100)
 
 }
