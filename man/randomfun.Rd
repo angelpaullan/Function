@@ -32,7 +32,5 @@ The associated probability density function (PDF) is:
 \examples{
 # Generate 100 random values
 x <- randomfun(100)
-hist(x, probability = TRUE, col = "lightblue", main = "Simulated distribution")
-curve(3*x - 3*x^2 + (3/4)*x^3, from=0, to=2, add=TRUE, col="red", lwd=2)
 
 }

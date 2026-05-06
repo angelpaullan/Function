@@ -4,7 +4,7 @@
 #' Computes the probability density function (pdf) of a custom distribution
 #' defined on the interval \eqn{[0,2]}.
 #'
-#' @usage df(x)
+#' @usage dfun(x)
 #'
 #' @param x Numeric vector at which the density is evaluated.
 #'
@@ -30,16 +30,16 @@
 #'
 #' @examples
 #' # Evaluate the density at a single point
-#' df(1)
+#' dfun(1)
 #'
 #' # Evaluate the density at a sequence of points
 #' x <- seq(0, 2, 0.1)
-#' plot(x, df(x), type = "l", col = "red", lwd = 2,
+#' plot(x, dfun(x), type = "l", col = "red", lwd = 2,
 #'      main = "Density function f(x)", ylab = "f(x)")
 #'
 #' @importFrom stats pchisq runif uniroot integrate
 #' @export
-df <- function(x) {
+dfun <- function(x) {
   ifelse(x >= 0 & x <= 2, (3/4) * x * (2 - x)^2, 0)
 }
 
