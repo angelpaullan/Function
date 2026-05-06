@@ -20,6 +20,10 @@
 #' @return
 #' A numeric vector of length \code{n} with random values.
 #'
+#' @examples
+#' # Generate 100 random values
+#randomfun2(100)
+#'
 #' @export
 randomfun2 <- function(n, tol = 1e-8, max_iter = 100) {
 

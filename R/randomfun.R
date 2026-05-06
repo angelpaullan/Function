@@ -24,7 +24,7 @@
 #'
 #' @examples
 #' # Generate 100 random values
-#' x <- randomfun(100)
+#randomfun(100)
 #'
 #' @export
 randomfun <- function(n) {

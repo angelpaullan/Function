@@ -29,3 +29,7 @@ The equation \eqn{F(x) - u = 0} is solved using the Newton-Raphson
 iterative scheme:
 \deqn{x_{n+1} = x_n - \frac{F(x_n) - u}{f(x_n)}}
 }
+\examples{
+# Generate 100 random values
+
+}

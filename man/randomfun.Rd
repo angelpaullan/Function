@@ -31,6 +31,5 @@ The associated probability density function (PDF) is:
 }
 \examples{
 # Generate 100 random values
-x <- randomfun(100)
 
 }
