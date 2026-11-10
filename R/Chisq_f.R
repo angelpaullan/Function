@@ -43,9 +43,7 @@ Chisq_f <- function(sample){
 
   fx <- diff(pfun(inter))
 
-  fx <- fx / sum(fx)
-
-  res <- stats::chisq.test(as.numeric(fa), p = fx)
+  res <- chisq.test(as.numeric(fa), p = fx)
 
   c(statistic = res$statistic,
     df = res$parameter,

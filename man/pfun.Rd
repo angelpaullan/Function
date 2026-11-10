@@ -2,37 +2,49 @@
 % Please edit documentation in R/pfun.R
 \name{pfun}
 \alias{pfun}
-\title{Cumulative Distribution Function of the Pf Distribution}
+\title{Función de distribución acumulada de la densidad
+f(x) = (35/32)(1-x^2)^3, para -1 <= x <= 1.}
 \usage{
 pfun(x)
 }
 \arguments{
-\item{x}{A numeric value or vector where the CDF is evaluated.}
+\item{x}{Vector numérico de valores donde se evalúa la función
+de distribución acumulada.}
 }
 \value{
-A numeric vector with the corresponding cumulative probabilities.
+Un vector numérico con las probabilidades acumuladas
+  correspondientes a cada valor de \code{x}.
 }
 \description{
-Evaluates the cumulative distribution function (CDF) of the Pf
-continuous distribution at given values of \code{x}.
+Calcula la probabilidad acumulada F(x)=P(X<=x)
+asociada a la función de densidad
 }
 \details{
-The Pfun distribution is defined on the interval [0, 2]. Its
-cumulative distribution function is:
+\deqn{
+f(x)=\frac{35}{32}(1-x^2)^3,\quad -1\le x\le 1.
+}
+
+La expresión cerrada de la distribución acumulada es
 
 \deqn{
-F(x) =
+F(x)=
 \begin{cases}
-0, & x \leq 0 \\
-\frac{3}{16}x^4 - x^3 + \frac{3}{2}x^2, & 0 < x < 2 \\
-1, & x \geq 2
+0, & x < -1,\\
+\frac{1}{2}+\frac{35}{32}
+\left(
+x-x^3+\frac{3}{5}x^5-\frac{1}{7}x^7
+\right), & -1\le x\le 1,\\
+1, & x > 1.
 \end{cases}
 }
 
-This function is vectorized and returns values in the interval [0, 1].
+
+La distribución es simétrica respecto a cero y está soportada
+únicamente en el intervalo \eqn{[-1,1]}.
 }
 \examples{
 pfun(0)
-pfun(c(0, 0.5, 1, 2))
+pfun(c(-1, 0, 1))
+pfun(seq(-1, 1, length.out = 5))
 
 }
