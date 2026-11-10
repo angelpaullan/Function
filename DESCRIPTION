@@ -4,13 +4,13 @@ Title: Simulation and Testing for an OwnFunction Distribution
 Version: 0.1.0
 Authors@R: c(
     person(
-      "Noemi", "Huebla",
-      email = "noenmi.huebla@espoch.edu.ec",
+      "Adrian", "Ayala",
+      email = "adrian.ayala@espoch.edu.ec",
       role = c("aut", "cre")
     ),
     person(
-    "Heidy", "Macas",
-    email = "heidy.macas@espoch.edu.ec",
+    "Mayra", "Ilbay",
+    email = "mayra.ilbay@espoch.edu.ec",
     role = c("aut")
     ),
     person(
@@ -19,8 +19,8 @@ Authors@R: c(
     role = c("aut")
     ),
     person(
-    "Julio", "Tamay",
-    email = "julio.tamay@espoch.edu.ec",
+    "Javier", "Sanches",
+    email = "javier.sanches@espoch.edu.ec",
     role = c("aut")
     )
   )

@@ -9,7 +9,7 @@
 #' @return A numeric vector with the corresponding cumulative probabilities.
 #'
 #' @details
-#' The Pf distribution is defined on the interval [0, 2]. Its
+#' The Pfun distribution is defined on the interval [0, 2]. Its
 #' cumulative distribution function is:
 #'
 #' \deqn{
@@ -24,11 +24,11 @@
 #' This function is vectorized and returns values in the interval [0, 1].
 #'
 #' @examples
-#' pf(0)
-#' pf(c(0, 0.5, 1, 2))
+#' pfun(0)
+#' pfun(c(0, 0.5, 1, 2))
 #'
 #' @export
-pf <- function(x) {
+pfun <- function(x) {
   ifelse(x <= 0, 0,
          ifelse(x < 2, (3/16) * x^4 - x^3 + (3/2) * x^2, 1))
 }

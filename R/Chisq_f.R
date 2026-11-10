@@ -1,57 +1,53 @@
-#' @title Chi-square Goodness-of-Fit Test for a sample of the Pf Distribution
+#' @title Chi-square Goodness-of-Fit Test
 #'
 #' @description
-#' Performs a chi-square goodness-of-fit test comparing observed frequencies
-#' from a sample with expected probabilities derived from the distribution:
+#' Performs a chi-square goodness-of-fit test to assess whether a sample
+#' follows the custom distribution defined by \code{pf()}.
 #'
-#' \deqn{
-#' f(x) =
-#' \begin{cases}
-#' \tfrac{3}{4} \, x \, (2 - x)^2, & 0 \le x \le 2 \\
-#' 0, & \text{otherwise}
-#' \end{cases}
-#' }
+#' @usage Chisq_f(sample)
 #'
-#' The interval [0, 2] is divided into bins of width 0.25.
-#'
-#' @param sample Numeric vector of observations.
-#'
-#' @return A named numeric vector with:
-#' \itemize{
-#'   \item statistic : Chi-square statistic
-#'   \item df        : Degrees of freedom
-#'   \item p.val     : p-value
-#' }
+#' @param sample Numeric vector containing the observed sample.
 #'
 #' @details
-#' This function tests the hypotheses \eqn{H_0: \pi = \hat{\pi}} vs. \eqn{H_1: \pi \neq \hat{\pi}}.
-#' Expected probabilities are computed as differences of the CDF \eqn{F(x)} over each interval.
-#' Observed frequencies in the sample are obtained using the \code{fdth} package.
+#' The sample is divided into intervals over the support \eqn{[-1,1]}.
+#' Observed frequencies are compared with the expected frequencies
+#' obtained from the cumulative distribution function.
+#'
+#' Expected probabilities are computed as the differences between
+#' consecutive values of the CDF evaluated at the interval boundaries.
+#'
+#' @return
+#' A named numeric vector containing:
+#' \itemize{
+#'   \item \code{statistic}: Chi-square test statistic.
+#'   \item \code{df}: Degrees of freedom.
+#'   \item \code{p.value}: P-value of the test.
+#' }
 #'
 #' @examples
-#' sample <- randomfun2(1000)
-#' Chisq_f(sample)
+#' # Generate a random sample
+#' x <- randomfun(1000)
 #'
-#' @importFrom fdth fdt
+#' # Apply the chi-square goodness-of-fit test
+#' Chisq_f(x)
+#'
 #' @importFrom stats chisq.test
-#'
 #' @export
-Chisq_f <- function(sample) {
-  # Definir cortes en el soporte [0,2]
-  x <- seq(0, 2, by = 0.25)
+Chisq_f <- function(sample){
 
-  # Probabilidades teóricas en cada intervalo usando tu CDF pf()
-  fx <- diff(pf(x))
+  inter <- seq(-1, 1, by = 0.25)
 
-  # Frecuencias observadas con tabla de frecuencias
-  t <- fdt(sample, start = 0, end = 2, h = 0.25)
-  fa <- t$table$f
+  fa <- table(cut(sample,
+                  breaks = inter,
+                  include.lowest = TRUE))
 
-  # Prueba chi-cuadrado
-  res <- chisq.test(x = fa, p = fx)
+  fx <- diff(pfun(inter))
 
-  # Resultado resumido
-  c("statistic" = as.numeric(res$statistic),
-    "df"        = as.numeric(res$parameter),
-    "p.val"     = res$p.value)
+  fx <- fx / sum(fx)
+
+  res <- stats::chisq.test(as.numeric(fa), p = fx)
+
+  c(statistic = res$statistic,
+    df = res$parameter,
+    p.value = res$p.value)
 }

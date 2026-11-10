@@ -2,42 +2,38 @@
 % Please edit documentation in R/Chisq_f.R
 \name{Chisq_f}
 \alias{Chisq_f}
-\title{Chi-square Goodness-of-Fit Test for a sample of the Pf Distribution}
+\title{Chi-square Goodness-of-Fit Test}
 \usage{
 Chisq_f(sample)
 }
 \arguments{
-\item{sample}{Numeric vector of observations.}
+\item{sample}{Numeric vector containing the observed sample.}
 }
 \value{
-A named numeric vector with:
+A named numeric vector containing:
 \itemize{
-  \item statistic : Chi-square statistic
-  \item df        : Degrees of freedom
-  \item p.val     : p-value
+  \item \code{statistic}: Chi-square test statistic.
+  \item \code{df}: Degrees of freedom.
+  \item \code{p.value}: P-value of the test.
 }
 }
 \description{
-Performs a chi-square goodness-of-fit test comparing observed frequencies
-from a sample with expected probabilities derived from the distribution:
-
-\deqn{
-f(x) =
-\begin{cases}
-\tfrac{3}{4} \, x \, (2 - x)^2, & 0 \le x \le 2 \\
-0, & \text{otherwise}
-\end{cases}
-}
-
-The interval [0, 2] is divided into bins of width 0.25.
+Performs a chi-square goodness-of-fit test to assess whether a sample
+follows the custom distribution defined by \code{pf()}.
 }
 \details{
-This function tests the hypotheses \eqn{H_0: \pi = \hat{\pi}} vs. \eqn{H_1: \pi \neq \hat{\pi}}.
-Expected probabilities are computed as differences of the CDF \eqn{F(x)} over each interval.
-Observed frequencies in the sample are obtained using the \code{fdth} package.
+The sample is divided into intervals over the support \eqn{[-1,1]}.
+Observed frequencies are compared with the expected frequencies
+obtained from the cumulative distribution function.
+
+Expected probabilities are computed as the differences between
+consecutive values of the CDF evaluated at the interval boundaries.
 }
 \examples{
-sample <- randomfun2(1000)
-Chisq_f(sample)
+# Generate a random sample
+x <- randomfun(1000)
+
+# Apply the chi-square goodness-of-fit test
+Chisq_f(x)
 
 }

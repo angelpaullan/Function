@@ -2,35 +2,44 @@
 % Please edit documentation in R/randomfun.R
 \name{randomfun}
 \alias{randomfun}
-\title{Random pseudo-numbers generator from a quartic CDF}
+\title{Random Generation from the Custom Distribution}
 \usage{
 randomfun(n)
 }
 \arguments{
-\item{n}{Integer. Length of the pseudo-random vector to be generated.}
+\item{n}{Number of random observations to generate.}
 }
 \value{
-A numeric vector of length \code{n} with random values following the distribution
-defined by the quartic CDF above.
+A numeric vector of length \code{n} containing random observations
+from the custom distribution.
 }
 \description{
-Generates pseudo-random numbers from a continuous distribution defined by
-a quartic cumulative distribution function (CDF), using the inverse transform method.
+Generates random values from the custom distribution defined on the
+interval \eqn{[-1,1]} using the inverse transform method.
 }
 \details{
-This function applies the inverse transform method:
-\deqn{F(x) = \tfrac{3}{2}x^2 - x^3 + \tfrac{3}{16}x^4, \quad x \in [0,2]}
+The function first generates random values from a Uniform(0,1)
+distribution. For each generated value \eqn{u}, it numerically solves
+the equation \eqn{F(x)=u}, where \eqn{F(x)} is the cumulative
+distribution function of the custom distribution.
 
-For each uniform random number \eqn{u \sim U(0,1)}, the algorithm solves
-\deqn{F(x) = u}
-numerically using Brent's method (via \code{uniroot}) to obtain the corresponding
-random variable \eqn{x}.
+The numerical inversion is performed using \code{uniroot()}, which
+searches for the solution in the interval \eqn{[-1,1]}.
 
-The associated probability density function (PDF) is:
-\deqn{f(x) = F'(x) = 3x - 3x^2 + \tfrac{3}{4}x^3}
+The cumulative distribution function is:
+\deqn{
+F(x)=\frac{1}{2}+\frac{35}{32}
+\left(x-x^3+\frac{3}{5}x^5-\frac{1}{7}x^7\right),
+\quad -1 \le x \le 1
+}
 }
 \examples{
-# Generate 100 random values
-randomfun(100)
+# Generate 100 random observations
+x <- randomfun(100)
+
+# Display a histogram
+hist(x, probability = TRUE,
+     main = "Random sample",
+     xlab = "x")
 
 }

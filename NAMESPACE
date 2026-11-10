@@ -2,12 +2,8 @@
 
 export(Chisq_f)
 export(dfun)
-export(pf)
+export(pfun)
 export(randomfun)
-export(randomfun2)
-importFrom(fdth,fdt)
 importFrom(stats,chisq.test)
-importFrom(stats,integrate)
-importFrom(stats,pchisq)
 importFrom(stats,runif)
 importFrom(stats,uniroot)
